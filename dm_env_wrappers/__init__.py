@@ -1,3 +1,4 @@
+from dm_env_wrappers.action_noise import ActionNoiseWrapper
 from dm_env_wrappers.action_repeat import ActionRepeatWrapper
 from dm_env_wrappers.base import EnvironmentWrapper, wrap_all
 from dm_env_wrappers.canonical_spec import CanonicalSpecWrapper
@@ -10,6 +11,7 @@ from dm_env_wrappers.single_precision import SinglePrecisionWrapper
 from dm_env_wrappers.step_limit import StepLimitWrapper
 
 __all__ = [
+    "ActionNoiseWrapper",
     "ActionRepeatWrapper",
     "CanonicalSpecWrapper",
     "ConcatObservationWrapper",
