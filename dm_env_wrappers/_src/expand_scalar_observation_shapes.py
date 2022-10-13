@@ -28,7 +28,7 @@ import numpy as np
 import tree
 from dm_env import specs
 
-from dm_env_wrappers import base
+from dm_env_wrappers._src import base
 
 
 class ExpandScalarObservationShapesWrapper(base.EnvironmentWrapper):

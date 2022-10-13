@@ -1,16 +1,20 @@
-from dm_env_wrappers.action_noise import ActionNoiseWrapper
-from dm_env_wrappers.action_repeat import ActionRepeatWrapper
-from dm_env_wrappers.base import EnvironmentWrapper, wrap_all
-from dm_env_wrappers.canonical_spec import CanonicalSpecWrapper
-from dm_env_wrappers.concatenate_observations import ConcatObservationWrapper
-from dm_env_wrappers.expand_scalar_observation_shapes import (
+"""dm_env_wrappers: A collection of wrappers for dm_env environments."""
+
+from dm_env_wrappers._src.action_noise import ActionNoiseWrapper
+from dm_env_wrappers._src.action_repeat import ActionRepeatWrapper
+from dm_env_wrappers._src.base import EnvironmentWrapper, wrap_all
+from dm_env_wrappers._src.canonical_spec import CanonicalSpecWrapper
+from dm_env_wrappers._src.concatenate_observations import ConcatObservationWrapper
+from dm_env_wrappers._src.expand_scalar_observation_shapes import (
     ExpandScalarObservationShapesWrapper,
 )
-from dm_env_wrappers.frame_stacking import FrameStackingWrapper
-from dm_env_wrappers.single_precision import SinglePrecisionWrapper
-from dm_env_wrappers.step_limit import StepLimitWrapper
+from dm_env_wrappers._src.frame_stacking import FrameStackingWrapper
+from dm_env_wrappers._src.single_precision import SinglePrecisionWrapper
+from dm_env_wrappers._src.step_limit import StepLimitWrapper
 
-__all__ = [
+__version__ = "0.0.4"
+
+__all__ = (
     "ActionNoiseWrapper",
     "ActionRepeatWrapper",
     "CanonicalSpecWrapper",
@@ -21,6 +25,15 @@ __all__ = [
     "SinglePrecisionWrapper",
     "StepLimitWrapper",
     "wrap_all",
-]
+)
 
-__version__ = "0.0.3"
+#  _________________________________________
+# / Please don't use symbols in `_src` they \
+# \ are not part of the public API.         /
+#  -----------------------------------------
+#         \   ^__^
+#          \  (oo)\_______
+#             (__)\       )\/\
+#                 ||----w |
+#                 ||     ||
+#

@@ -16,7 +16,7 @@
 
 import dm_env
 
-from dm_env_wrappers import base
+from dm_env_wrappers._src import base
 
 
 class ActionRepeatWrapper(base.EnvironmentWrapper):

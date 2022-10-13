@@ -21,7 +21,7 @@ import numpy as np
 import tree
 from dm_env import specs as dm_env_specs
 
-from dm_env_wrappers import base
+from dm_env_wrappers._src import base
 
 
 class FrameStackingWrapper(base.EnvironmentWrapper):

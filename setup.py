@@ -54,7 +54,7 @@ author = "Kevin Zakka"
 
 author_email = "kevinarmandzakka@gmail.com"
 
-description = "Wrappers for dm_env environments"
+description = "A collection of wrappers for dm_env environments"
 
 
 setup(

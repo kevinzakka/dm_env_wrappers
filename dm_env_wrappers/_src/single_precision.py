@@ -18,7 +18,7 @@ import dm_env
 import numpy as np
 import tree
 
-from dm_env_wrappers import base
+from dm_env_wrappers._src import base
 
 
 class SinglePrecisionWrapper(base.EnvironmentWrapper):

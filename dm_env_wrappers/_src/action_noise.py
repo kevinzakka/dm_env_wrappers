@@ -7,13 +7,15 @@ import numpy as np
 import tree
 from dm_env import specs
 
-from dm_env_wrappers import base
+from dm_env_wrappers._src import base
 
 
 class ActionNoiseWrapper(base.EnvironmentWrapper):
     """Wrapper that adds Gaussian noise to the actions.
 
-    This only affects action specs of type `specs.BoundedArray`.
+    The scale argument specifies the standard deviation of the Gaussian noise as a
+    fraction of the max-min range of each action dimension. This only affects action
+    specs of type `specs.BoundedArray`.
     """
 
     def __init__(
@@ -23,6 +25,9 @@ class ActionNoiseWrapper(base.EnvironmentWrapper):
         random_state: Optional[Union[np.random.RandomState, int]] = None,
     ) -> None:
         super().__init__(environment)
+
+        if scale < 0:
+            raise ValueError("Scale must be non-negative.")
 
         self._action_spec = environment.action_spec()
         self._scale = scale
@@ -46,12 +51,14 @@ class ActionNoiseWrapper(base.EnvironmentWrapper):
                 self._random_state = np.random.RandomState(random_state)
             else:
                 self._random_state = random_state
+        assert isinstance(self._random_state, np.random.RandomState)
 
     def step(self, action) -> dm_env.TimeStep:
-        noisy_action = _corrupt_nested_action(
-            action, self._action_spec, self._scale, self._random_state
-        )
-        return self._environment.step(noisy_action)
+        if self._scale > 0:
+            action = _corrupt_nested_action(
+                action, self._action_spec, self._scale, self._random_state
+            )
+        return self._environment.step(action)
 
 
 def _corrupt_nested_action(
