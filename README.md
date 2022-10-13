@@ -10,7 +10,7 @@
 [tests-badge]: https://github.com/kevinzakka/dm_env_wrappers/actions/workflows/build.yml/badge.svg
 [tests]: https://github.com/kevinzakka/dm_env_wrappers/actions/workflows/build.yml
 
-`dm_env_wrappers` is a collection of frequently-used wrappers for environments that respect the [dm_env](https://github.com/deepmind/dm_env) interface (e.g., dm_control suite and composer). The wrappers have been extracted out of [acme](https://github.com/deepmind/acme) and are now available as a standalone library.
+`dm_env_wrappers` is a collection of frequently-used wrappers for environments that respect the [dm_env](https://github.com/deepmind/dm_env) interface (e.g., dm_control suite, composer, etc.). The wrappers have been extracted out of [acme](https://github.com/deepmind/acme) and are now available as a standalone library.
 
 ## Installation (Python 3.7+)
 
