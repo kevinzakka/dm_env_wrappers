@@ -27,7 +27,7 @@ class ActionNoiseWrapper(base.EnvironmentWrapper):
         super().__init__(environment)
 
         if scale < 0:
-            raise ValueError("Scale must be non-negative.")
+            raise ValueError("scale must be non-negative.")
 
         self._action_spec = environment.action_spec()
         self._scale = scale

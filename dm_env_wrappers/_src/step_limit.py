@@ -26,8 +26,15 @@ class StepLimitWrapper(base.EnvironmentWrapper):
 
     def __init__(
         self, environment: dm_env.Environment, step_limit: Optional[int] = None
-    ):
+    ) -> None:
         super().__init__(environment)
+
+        if step_limit is not None:
+            if step_limit <= 0:
+                raise ValueError("step_limit must be a positive integer.")
+            if not isinstance(step_limit, int):
+                raise ValueError("step_limit must be an integer.")
+
         self._step_limit = step_limit
         self._elapsed_steps = 0
 
