@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-from setuptools import find_packages, setup
+from setuptools import find_namespace_packages, setup
 
 _here = Path(__file__).resolve().parent
 
@@ -70,13 +70,13 @@ setup(
     url=f"https://github.com/kevinzakka/{name}",
     license="Apache License 2.0",
     license_files=("LICENSE",),
-    packages=find_packages(),
+    packages=find_namespace_packages(exclude=["*_test.py"]),
     package_data={
         f"{name}": [
             "py.typed",
         ]
     },
-    zip_safe=True,
+    zip_safe=False,
     python_requires=">=3.7",
     install_requires=core_requirements,
     classifiers=classifiers,

@@ -12,7 +12,7 @@ from dm_env_wrappers._src.frame_stacking import FrameStackingWrapper
 from dm_env_wrappers._src.single_precision import SinglePrecisionWrapper
 from dm_env_wrappers._src.step_limit import StepLimitWrapper
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 __all__ = (
     "ActionNoiseWrapper",
