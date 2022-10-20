@@ -20,7 +20,6 @@
 
 | Wrapper                                | Description                                          |
 |----------------------------------------|------------------------------------------------------|
-| `ActionNoiseWrapper`                   | Adds Gaussian noise to the actions.                  |
 | `ActionRepeatWrapper`                  | Repeats the same action for a given number of steps. |
 | `CanonicalSpecWrapper`                 | Converts action specs to canonical form.             |
 | `ConcatObservationWrapper`             | Concatenate observation fields into array.           |
@@ -29,6 +28,7 @@
 | `FrameStackingWrapper`                 | Stacks observations along a new final axis.          |
 | `SinglePrecisionWrapper`               | Converts all spec dtypes to single precision.        |
 | `StepLimitWrapper`                     | Limits the number of steps in an episode.            |
+| `DmControlVideoWrapper`                | Renders episodes for dm_control environments.        |
 
 </details>
 
