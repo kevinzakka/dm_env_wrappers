@@ -56,7 +56,9 @@ class VideoWrapper(base.EnvironmentWrapper, abc.ABC):
     def _write_frames(self) -> None:
         if self._counter % self._record_every == 0:
             filename = self._save_dir / f"{self._counter:05d}.mp4"
-            imageio.mimsave(str(filename), self._frames, fps=self._frame_rate)  # type: ignore
+            imageio.mimsave(
+                str(filename), self._frames, fps=self._frame_rate  # type: ignore
+            )
 
         # Clear frame buffer whether or not we wrote a video.
         self._frames = []

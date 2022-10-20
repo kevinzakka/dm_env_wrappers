@@ -12,6 +12,7 @@ from dm_env_wrappers._src.frame_stacking import FrameStackingWrapper
 from dm_env_wrappers._src.mujoco.dm_control_video import DmControlVideoWrapper
 from dm_env_wrappers._src.single_precision import SinglePrecisionWrapper
 from dm_env_wrappers._src.step_limit import StepLimitWrapper
+from dm_env_wrappers._src.video import VideoWrapper
 
 __version__ = "0.0.6"
 
@@ -26,6 +27,7 @@ __all__ = (
     "FrameStackingWrapper",
     "SinglePrecisionWrapper",
     "StepLimitWrapper",
+    "VideoWrapper",
     "wrap_all",
 )
 
