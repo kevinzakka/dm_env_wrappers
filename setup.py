@@ -22,6 +22,8 @@ with open(_here / "README.md", "r") as f:
 core_requirements = [
     "numpy",
     "dm-env",
+    "imageio",
+    "imageio-ffmpeg",
 ]
 
 testing_requirements = [
