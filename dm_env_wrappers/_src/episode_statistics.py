@@ -1,7 +1,7 @@
 """Wrapper that tracks episode statistics."""
 
 from collections import deque
-from typing import Deque
+from typing import Deque, Dict
 
 import dm_env
 
@@ -51,3 +51,10 @@ class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
         if not self._length_queue:
             return 0.0
         return sum(self._length_queue) / len(self._length_queue)
+
+    def get_statistics(self) -> Dict[str, float]:
+        """Returns the mean return / length of the last `deque_size` episodes."""
+        return {
+            "mean_return": self.get_mean_return(),
+            "mean_length": self.get_mean_length(),
+        }
