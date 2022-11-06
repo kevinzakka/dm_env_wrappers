@@ -75,5 +75,5 @@ def wblog(function):
     Returns:
         The decorated function.
     """
-    function._wblog = True  # pylint: disable=protected-access
+    function._wblog = True
     return function
