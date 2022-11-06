@@ -1,11 +1,11 @@
 """Wrapper for tracking episode statistics."""
 
 from collections import deque
-from typing import Deque, Dict
+from typing import Deque
 
 import dm_env
 
-from dm_env_wrappers._src import base
+from dm_env_wrappers._src import base, wandb_logger
 
 
 class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
@@ -43,21 +43,16 @@ class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
             self._episode_length = 0
         return timestep
 
+    @wandb_logger.wblog
     def get_mean_return(self) -> float:
         """Returns the mean return of the last `deque_size` episodes."""
         if not self._return_queue:
-            return 0.0
+            raise ValueError("No episode statistics available yet.")
         return sum(self._return_queue) / len(self._return_queue)
 
+    @wandb_logger.wblog
     def get_mean_length(self) -> float:
         """Returns the mean length of the last `deque_size` episodes."""
         if not self._length_queue:
-            return 0.0
+            raise ValueError("No episode statistics available yet.")
         return sum(self._length_queue) / len(self._length_queue)
-
-    def get_statistics(self) -> Dict[str, float]:
-        """Returns the mean return / length of the last `deque_size` episodes."""
-        return {
-            "mean_return": self.get_mean_return(),
-            "mean_length": self.get_mean_length(),
-        }

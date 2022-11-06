@@ -14,6 +14,7 @@ from dm_env_wrappers._src.single_precision import SinglePrecisionWrapper
 from dm_env_wrappers._src.step_limit import StepLimitWrapper
 from dm_env_wrappers._src.validate_spec import ValidateActionSpecWrapper
 from dm_env_wrappers._src.video import VideoWrapper
+from dm_env_wrappers._src.wandb_logger import WandbLoggerWrapper, wblog
 
 __version__ = "0.0.6"
 
@@ -30,6 +31,8 @@ __all__ = (
     "StepLimitWrapper",
     "ValidateActionSpecWrapper",
     "VideoWrapper",
+    "WandbLoggerWrapper",
+    "wblog",
     "wrap_all",
 )
 
