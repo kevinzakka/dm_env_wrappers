@@ -30,9 +30,7 @@ class EpisodeStatisticsWrapper(absltest.TestCase):
         environment = _FakeEnvironment()
         environment = episode_statistics.EpisodeStatisticsWrapper(environment)
         with self.assertRaises(ValueError):
-            environment.get_mean_return()
-        with self.assertRaises(ValueError):
-            environment.get_mean_length()
+            environment.get_statistics()
 
     def test_episode_statistics(self):
         """Tests that the wrapper returns the correct statistics."""
@@ -46,8 +44,10 @@ class EpisodeStatisticsWrapper(absltest.TestCase):
             while not timestep.last():
                 timestep = environment.step(0)
 
-        self.assertEqual(environment.get_mean_return(), 5.0)
-        self.assertEqual(environment.get_mean_length(), 5.0)
+        statistics = environment.get_statistics()
+
+        self.assertEqual(statistics["return"], 5.0)
+        self.assertEqual(statistics["length"], 5.0)
 
 
 if __name__ == "__main__":

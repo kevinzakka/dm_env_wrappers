@@ -24,6 +24,7 @@ core_requirements = [
     "dm-env",
     "imageio",
     "imageio-ffmpeg",
+    "wandb",
 ]
 
 testing_requirements = [
