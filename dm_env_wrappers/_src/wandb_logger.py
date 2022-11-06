@@ -42,6 +42,10 @@ class WandbLoggerWrapper(base.EnvironmentWrapper):
             if hasattr(attr, "_wblog"):
                 self._wblogged_functions.append(attr)
 
+        print("Logging the following functions to Weights & Biases:")
+        for function in self._wblogged_functions:
+            print(function.__name__)
+
     def log(self, step: int) -> None:
         """Logs all @wblogged functions to Weights & Biases.
 
@@ -54,10 +58,9 @@ class WandbLoggerWrapper(base.EnvironmentWrapper):
                 raise ValueError(
                     f"Function {function.__name__} must return a dictionary."
                 )
-            for key, value in values.items():
-                if self._prefix is not None:
-                    key = f"{self._prefix}/{key}"
-                self._wandb_run.log({key: value}, step=step)
+            if self._prefix is not None:
+                values = {f"{self._prefix}/{k}": v for k, v in values.items()}
+            self._wandb_run.log(values, step=step)
 
 
 def wblog(function):
