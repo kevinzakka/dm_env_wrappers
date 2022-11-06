@@ -1,4 +1,4 @@
-"""Wrapper that tracks episode statistics."""
+"""Wrapper for tracking episode statistics."""
 
 from collections import deque
 from typing import Deque, Dict
@@ -9,14 +9,17 @@ from dm_env_wrappers._src import base
 
 
 class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
-    """Wrapper for tracking an episode's statistics.
+    """Tracks an episode's statistics.
 
     This wrapper tracks the length and return of the last `deque_size` episodes. The
     mean length and return can be retrieved using `get_mean_length` and
     `get_mean_return` respectively.
+
+    By default, `deque_size` is set to 1 which means that only the current episode's
+    statistics are tracked.
     """
 
-    def __init__(self, environment: dm_env.Environment, deque_size: int = 100) -> None:
+    def __init__(self, environment: dm_env.Environment, deque_size: int = 1) -> None:
         super().__init__(environment)
 
         self._episode_return: float = 0.0

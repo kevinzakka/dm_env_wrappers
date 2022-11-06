@@ -1,4 +1,4 @@
-"""Video wrapper for dm_control environments."""
+"""A wrapper for recording and rendering dm_control environments."""
 
 import math
 from typing import Optional, Union
@@ -10,7 +10,7 @@ from dm_env_wrappers._src import video
 
 
 class DmControlVideoWrapper(video.VideoWrapper):
-    """Video rendering wrapper for dm_control environments."""
+    """Records and renders episodes for `dm_control` environments."""
 
     def __init__(
         self,
