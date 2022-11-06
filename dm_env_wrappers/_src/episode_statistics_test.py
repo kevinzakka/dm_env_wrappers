@@ -26,11 +26,13 @@ class _FakeEnvironment(dm_env.Environment):
 class EpisodeStatisticsWrapper(absltest.TestCase):
     """Tests for EpisodeStatisticsWrapper."""
 
-    def test_returns_zero_at_init(self) -> None:
+    def test_raises_value_error_at_init(self) -> None:
         environment = _FakeEnvironment()
         environment = episode_statistics.EpisodeStatisticsWrapper(environment)
-        self.assertEqual(environment.get_mean_return(), 0.0)
-        self.assertEqual(environment.get_mean_length(), 0.0)
+        with self.assertRaises(ValueError):
+            environment.get_mean_return()
+        with self.assertRaises(ValueError):
+            environment.get_mean_length()
 
     def test_episode_statistics(self):
         """Tests that the wrapper returns the correct statistics."""
