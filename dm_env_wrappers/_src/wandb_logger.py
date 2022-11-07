@@ -11,6 +11,7 @@ FnType = Callable[[Any], Dict[str, Union[float, np.ndarray]]]
 
 # This will contain all functions decorated with `wblog` even if the environment is not
 # using wrappers that call the decorator.
+# TODO(kevin): Figure out a better way to do this.
 _ALL_DECORATED: Dict[str, Any] = {}
 
 
@@ -59,8 +60,7 @@ class WandbLoggerWrapper(base.EnvironmentWrapper):
         self._wandb_run = wandb_run
         self._prefix = prefix
 
-        # Only grab decorated functions that are defined in the environment's class,
-        # i.e., in `self._environment`.
+        # Only grab decorated functions that are defined in the environment's class.
         self._registry: Dict[str, FnType] = {}
         for name, func in _ALL_DECORATED.items():
             if hasattr(self._environment, name):
@@ -72,8 +72,8 @@ class WandbLoggerWrapper(base.EnvironmentWrapper):
         Args:
             step: The current step.
         """
-        # It's cheaper to call wandb.log once with a dictionary than to call it
-        # multiple times with a single key-value pair.
+        # It's cheaper to call `wandb.log`` once with a dictionary than to call it once
+        # per key-value pair.
         log_dict = {}
         for name, func in self._registry.items():
             ret = func(self)
