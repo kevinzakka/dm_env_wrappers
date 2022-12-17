@@ -10,6 +10,9 @@ from dm_env_wrappers._src.expand_scalar_observation_shapes import (
 )
 from dm_env_wrappers._src.frame_stacking import FrameStackingWrapper
 from dm_env_wrappers._src.mujoco.dm_control_video import DmControlVideoWrapper
+from dm_env_wrappers._src.observation_action_reward import (
+    ObservationActionRewardWrapper,
+)
 from dm_env_wrappers._src.single_precision import SinglePrecisionWrapper
 from dm_env_wrappers._src.step_limit import StepLimitWrapper
 from dm_env_wrappers._src.validate_spec import ValidateActionSpecWrapper
@@ -27,6 +30,7 @@ __all__ = (
     "EpisodeStatisticsWrapper",
     "ExpandScalarObservationShapesWrapper",
     "FrameStackingWrapper",
+    "ObservationActionRewardWrapper",
     "SinglePrecisionWrapper",
     "StepLimitWrapper",
     "ValidateActionSpecWrapper",
