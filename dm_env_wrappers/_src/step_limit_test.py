@@ -17,7 +17,7 @@ class StepLimitWrapperTest(absltest.TestCase):
     def test_raises_value_error_on_non_integer_limit(self) -> None:
         env = load_suite("cartpole", "balance")
         with self.assertRaises(ValueError):
-            step_limit.StepLimitWrapper(env, step_limit=0.5)
+            step_limit.StepLimitWrapper(env, step_limit=0.5)  # type: ignore
 
 
 if __name__ == "__main__":
