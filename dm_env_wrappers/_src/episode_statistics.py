@@ -5,7 +5,7 @@ from typing import Deque, Dict
 
 import dm_env
 
-from dm_env_wrappers._src import base, wandb_logger
+from dm_env_wrappers._src import base
 
 
 class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
@@ -43,7 +43,6 @@ class EpisodeStatisticsWrapper(base.EnvironmentWrapper):
             self._episode_length = 0
         return timestep
 
-    @wandb_logger.wblog
     def get_statistics(self) -> Dict[str, float]:
         """Returns the mean return and length of the last `deque_size` episodes."""
         if not self._return_queue or not self._length_queue:
