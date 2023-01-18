@@ -41,6 +41,14 @@ class DmControlVideoWrapper(video.VideoWrapper):
         self._height = height
         self._width = width
 
+        # Ensure the offscreen framebuffer is large enough to accommodate the requested
+        # resolution.
+        new_offwidth = max(self.physics.model.vis.global_.offwidth, width)
+        new_offheight = max(self.physics.model.vis.global_.offheight, height)
+        mjcf_model = self._task.root_entity.mjcf_model
+        mjcf_model.visual.__getattr__("global").offheight = new_offheight
+        mjcf_model.visual.__getattr__("global").offwidth = new_offwidth
+
     # Helper methods.
 
     def _render_frame(self, observation) -> np.ndarray:
