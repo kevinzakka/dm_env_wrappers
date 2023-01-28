@@ -1,6 +1,5 @@
 [tool.black]
-line-length = 88  # Default.
-target-version = ["py38", "py39"]
+target-version = ["py38", "py39", "py310"]
 
 [tool.isort]
 profile = "black"
@@ -9,3 +8,12 @@ single_line_exclusions = ["typing"]
 
 [tool.mypy]
 ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py310"
+select = ["E", "F"]
+ignore = ["E501"]
+unfixable = ["F401"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["E402"]

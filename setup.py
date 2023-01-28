@@ -38,6 +38,7 @@ dev_requirements = [
     "isort",
     "flake8",
     "mypy",
+    "ruff",
 ] + testing_requirements
 
 classifiers = [
@@ -47,9 +48,9 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 
@@ -80,7 +81,7 @@ setup(
         ]
     },
     zip_safe=False,
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=core_requirements,
     classifiers=classifiers,
     extras_require={

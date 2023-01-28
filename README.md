@@ -12,7 +12,7 @@
 
 `dm_env_wrappers` is a collection of frequently-used wrappers for environments that respect the [dm_env](https://github.com/deepmind/dm_env) interface (e.g., dm_control suite/composer envs).
 
-## Installation (Python 3.7+)
+## Installation (Python 3.8+)
 
 ```bash
 pip install --upgrade dm_env_wrappers
