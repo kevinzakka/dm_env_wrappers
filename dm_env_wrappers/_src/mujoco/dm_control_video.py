@@ -42,14 +42,18 @@ class DmControlVideoWrapper(video.VideoWrapper):
         self._width = width
 
         # Ensure the offscreen framebuffer is large enough to accommodate the requested
-        # resolution.
-        new_offwidth = max(self.physics.model.vis.global_.offwidth, width)
-        new_offheight = max(self.physics.model.vis.global_.offheight, height)
+        # resolution. This only works for `Composer` tasks.
+        if hasattr(self._task, "root_entity"):
+            self._update_offscreen_framebuffer()
+
+    # Helper methods.
+
+    def _update_offscreen_framebuffer(self) -> None:
+        new_offwidth = max(self.physics.model.vis.global_.offwidth, self._width)
+        new_offheight = max(self.physics.model.vis.global_.offheight, self._height)
         mjcf_model = self._task.root_entity.mjcf_model
         mjcf_model.visual.__getattr__("global").offheight = new_offheight
         mjcf_model.visual.__getattr__("global").offwidth = new_offwidth
-
-    # Helper methods.
 
     def _render_frame(self, observation) -> np.ndarray:
         del observation  # Unused.
