@@ -18,7 +18,7 @@ from dm_env_wrappers._src.step_limit import StepLimitWrapper
 from dm_env_wrappers._src.validate_spec import ValidateActionSpecWrapper
 from dm_env_wrappers._src.video import VideoWrapper
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 
 __all__ = (
     "ActionRepeatWrapper",
