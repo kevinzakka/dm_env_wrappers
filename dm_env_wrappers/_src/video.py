@@ -2,7 +2,7 @@
 
 import abc
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 import dm_env
 import imageio
@@ -33,6 +33,7 @@ class VideoWrapper(base.EnvironmentWrapper, abc.ABC):
 
         self._frames: List[np.ndarray] = []
         self._counter: int = 0
+        self._latest_filename: Optional[Path] = None
 
     def step(self, action) -> dm_env.TimeStep:
         timestep = self.environment.step(action)
@@ -59,8 +60,16 @@ class VideoWrapper(base.EnvironmentWrapper, abc.ABC):
             imageio.mimsave(
                 str(filename), self._frames, fps=self._frame_rate  # type: ignore
             )
+            self._latest_filename = filename
         self._frames = []
 
     @abc.abstractmethod
     def _render_frame(self, observation) -> np.ndarray:
         ...
+
+    @property
+    def latest_filename(self) -> Path:
+        """Path to the latest video file."""
+        if self._latest_filename is None:
+            raise ValueError("No video has been recorded yet.")
+        return self._latest_filename

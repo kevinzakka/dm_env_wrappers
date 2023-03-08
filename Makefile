@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: help format test
+.PHONY: help check format test
 .DEFAULT: help
 
 help:
@@ -12,10 +12,9 @@ help:
 	@echo "  test: Run all tests"
 
 format:
-	isort .
 	black .
-	ruff .
-	mypy .
+	ruff . --fix --ignore E501
+	mypy --ignore-missing-imports .
 
 test:
 	pytest -n auto

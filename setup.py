@@ -24,7 +24,6 @@ core_requirements = [
     "dm-env",
     "imageio",
     "imageio-ffmpeg",
-    "wandb",
 ]
 
 testing_requirements = [
@@ -35,8 +34,6 @@ testing_requirements = [
 
 dev_requirements = [
     "black",
-    "isort",
-    "flake8",
     "mypy",
     "ruff",
 ] + testing_requirements
@@ -77,12 +74,7 @@ setup(
     license="Apache License 2.0",
     license_files=("LICENSE",),
     packages=find_namespace_packages(exclude=["*_test.py"]),
-    package_data={
-        f"{name}": [
-            "py.typed",
-        ]
-    },
-    zip_safe=False,
+    package_data={f"{name}": ["py.typed"]},
     python_requires=">=3.8",
     install_requires=core_requirements,
     classifiers=classifiers,
