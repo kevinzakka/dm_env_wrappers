@@ -11,6 +11,7 @@ from dm_env_wrappers._src.expand_scalar_observation_shapes import (
 from dm_env_wrappers._src.frame_stacking import FrameStackingWrapper
 from dm_env_wrappers._src.mujoco.dm_control_video import DmControlVideoWrapper
 from dm_env_wrappers._src.mujoco.dm_control import DmControlWrapper
+from dm_env_wrappers._src.mujoco.action_smoother import ActionSmootherWrapper
 from dm_env_wrappers._src.observation_action_reward import (
     ObservationActionRewardWrapper,
 )
@@ -23,6 +24,7 @@ __version__ = "0.0.9"
 
 __all__ = (
     "ActionRepeatWrapper",
+    "ActionSmootherWrapper",
     "CanonicalSpecWrapper",
     "ConcatObservationWrapper",
     "DmControlWrapper",

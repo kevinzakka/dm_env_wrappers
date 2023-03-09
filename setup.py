@@ -20,10 +20,11 @@ with open(_here / "README.md", "r") as f:
     readme = f.read()
 
 core_requirements = [
-    "numpy",
     "dm-env",
     "imageio",
     "imageio-ffmpeg",
+    "numpy",
+    "scipy",
 ]
 
 testing_requirements = [
