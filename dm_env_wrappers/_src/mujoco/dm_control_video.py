@@ -40,6 +40,7 @@ class DmControlVideoWrapper(video.VideoWrapper):
         self._camera_id = camera_id
         self._height = height
         self._width = width
+        self._playback_speed = playback_speed
 
         # Ensure the offscreen framebuffer is large enough to accommodate the requested
         # resolution. This only works for `Composer` tasks.
