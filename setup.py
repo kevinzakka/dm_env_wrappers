@@ -27,9 +27,9 @@ core_requirements = [
     "scipy",
 ]
 
-testing_requirements = [
+test_requirements = [
     "absl-py",
-    "pytest",
+    "pytest-xdist",
     "dm_control >= 1.0.7",
 ]
 
@@ -37,7 +37,7 @@ dev_requirements = [
     "black",
     "mypy",
     "ruff",
-] + testing_requirements
+] + test_requirements
 
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -80,7 +80,7 @@ setup(
     install_requires=core_requirements,
     classifiers=classifiers,
     extras_require={
-        "testing": testing_requirements,
+        "test": test_requirements,
         "dev": dev_requirements,
     },
 )
