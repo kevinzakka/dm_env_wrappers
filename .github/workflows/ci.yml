@@ -1,0 +1,19 @@
+name: build
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  run-dm_env_wrappers-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["python:3.8", "python:3.9", "python:3.10", "python:3.11"]
+    steps:
+      - name: Checkout mujoco_utils
+        uses: actions/checkout@v3
+      - name: Prepare Python
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install -e ".[testing]"
+      - name: Run tests
+        run: |
+          make test
