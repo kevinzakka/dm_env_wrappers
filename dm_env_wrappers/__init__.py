@@ -21,6 +21,14 @@ from dm_env_wrappers._src.step_limit import StepLimitWrapper
 from dm_env_wrappers._src.validate_spec import ValidateActionSpecWrapper
 from dm_env_wrappers._src.video import VideoWrapper
 
+from dm_env_wrappers._src import lazy_loader
+
+with lazy_loader.LazyImports(__name__, False):
+    from dm_env_wrappers._src.gymnasium_wrapper import GymnasiumWrapper
+    from dm_env_wrappers._src.gym_wrapper import GymWrapper
+
+del lazy_loader  # lazy_loader should not be exported
+
 __version__ = "0.0.12"
 
 __all__ = (
@@ -35,6 +43,8 @@ __all__ = (
     "EpisodeStatisticsWrapper",
     "ExpandScalarObservationShapesWrapper",
     "FrameStackingWrapper",
+    "GymnasiumWrapper",
+    "GymWrapper",
     "ObservationActionRewardWrapper",
     "SinglePrecisionWrapper",
     "StepLimitWrapper",

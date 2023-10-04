@@ -31,6 +31,8 @@ test_requirements = [
     "absl-py",
     "pytest-xdist",
     "dm_control >= 1.0.7",
+    "gym<0.24.0",
+    "gymnasium",
 ]
 
 dev_requirements = [
