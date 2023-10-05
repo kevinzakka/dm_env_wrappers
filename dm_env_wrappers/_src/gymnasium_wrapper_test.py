@@ -10,7 +10,7 @@ from dm_env_wrappers._src import gymnasium_wrapper
 
 class GymWrapperTest(absltest.TestCase):
     def test_gym_cartpole(self):
-        env = gymnasium_wrapper.GymnasiumWrapper(gymnasium.make("CartPole-v0"))
+        env = gymnasium_wrapper.GymnasiumWrapper(gymnasium.make("CartPole-v1"))
 
         # Test converted observation spec.
         observation_spec: specs.BoundedArray = env.observation_spec()

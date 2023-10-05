@@ -29,7 +29,7 @@ with lazy_loader.LazyImports(__name__, False):
 
 del lazy_loader  # lazy_loader should not be exported
 
-__version__ = "0.0.12"
+__version__ = "0.0.13"
 
 __all__ = (
     "ActionNoiseWrapper",
