@@ -27,11 +27,18 @@ core_requirements = [
     "scipy",
 ]
 
-test_requirements = [
-    "absl-py",
-    "pytest-xdist",
-    "dm_control >= 1.0.7",
-]
+gym_requirements = ["gym<0.24.0"]
+gymnasium_requirements = ["gymnasium"]
+
+test_requirements = (
+    [
+        "absl-py",
+        "pytest-xdist",
+        "dm_control >= 1.0.7",
+    ]
+    + gym_requirements
+    + gymnasium_requirements
+)
 
 dev_requirements = [
     "black",
@@ -82,5 +89,7 @@ setup(
     extras_require={
         "test": test_requirements,
         "dev": dev_requirements,
+        "gym": gym_requirements,
+        "gymnasium": gymnasium_requirements,
     },
 )
