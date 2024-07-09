@@ -73,7 +73,7 @@ def _scale_nested_action(nested_action, nested_spec, clip: bool):
 
     def _scale_action(action: np.ndarray, spec: specs.Array):
         """Converts a single canonical action back to the given action spec."""
-        if isinstance(spec, specs.BoundedArray):
+        if isinstance(spec, specs.BoundedArray) and not isinstance(spec, specs.DiscreteArray):
             # Get scale and offset of output action spec.
             scale = spec.maximum - spec.minimum
             offset = spec.minimum
