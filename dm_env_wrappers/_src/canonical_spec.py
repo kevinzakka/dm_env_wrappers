@@ -58,7 +58,7 @@ def _convert_spec(nested_spec):
 
     def _convert_single_spec(spec):
         """Converts a single spec to canonical if bounded."""
-        if isinstance(spec, specs.BoundedArray):
+        if isinstance(spec, specs.BoundedArray) and not isinstance(spec, specs.DiscreteArray):
             return spec.replace(
                 minimum=-np.ones(spec.shape), maximum=np.ones(spec.shape)
             )
